@@ -1,0 +1,213 @@
+2016-01-19 23:15:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column "ROLE" not found; SQL statement:
+select "EMAIL", "ID", "FIRST_NAME", "LAST_NAME", "ROLE", "PASSWORD" from "USER" limit 500 offset 0 [42122-190]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:147)
+	at org.h2.command.dml.Select.prepare(Select.java:835)
+	at org.h2.command.Parser.prepareCommand(Parser.java:246)
+	at org.h2.engine.Session.prepareLocal(Session.java:460)
+	at org.h2.engine.Session.prepareCommand(Session.java:402)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1188)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:72)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:276)
+	at com.zaxxer.hikari.proxy.ConnectionProxy.prepareStatement(ConnectionProxy.java:268)
+	at com.zaxxer.hikari.proxy.ConnectionJavassistProxy.prepareStatement(ConnectionJavassistProxy.java)
+	at slick.jdbc.JdbcBackend$SessionDef$class.prepareStatement(JdbcBackend.scala:297)
+	at slick.jdbc.JdbcBackend$BaseSession.prepareStatement(JdbcBackend.scala:407)
+	at slick.jdbc.StatementInvoker.results(StatementInvoker.scala:33)
+	at slick.jdbc.StatementInvoker.iteratorTo(StatementInvoker.scala:22)
+	at slick.jdbc.Invoker$class.foreach(Invoker.scala:48)
+	at slick.jdbc.StatementInvoker.foreach(StatementInvoker.scala:16)
+	at slick.jdbc.StreamingInvokerAction$class.run(StreamingInvokerAction.scala:22)
+	at slick.driver.JdbcActionComponent$QueryActionExtensionMethodsImpl$$anon$1.run(JdbcActionComponent.scala:218)
+	at slick.driver.JdbcActionComponent$QueryActionExtensionMethodsImpl$$anon$1.run(JdbcActionComponent.scala:218)
+	at slick.backend.DatabaseComponent$DatabaseDef$$anon$2.liftedTree1$1(DatabaseComponent.scala:237)
+	at slick.backend.DatabaseComponent$DatabaseDef$$anon$2.run(DatabaseComponent.scala:237)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+01-28 17:48:37 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "join" not found; SQL statement:
+select * from "join" [42102-166]
+01-28 17:48:38 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "join" not found; SQL statement:
+select * from "join" [42102-166]
+01-28 17:49:05 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * FROM JOIN[*] A, B ON A.ID = B.ID; "; expected "identifier"; SQL statement:
+select * from join a, b on a.ID = b.id; [42001-166]
+01-28 17:50:33 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Column "B.M" must be in the GROUP BY list; SQL statement:
+select * from a join  b on a.ID = b.id having sum(m) > 6 [90016-166]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.expression.ExpressionColumn.updateAggregate(ExpressionColumn.java:159)
+	at org.h2.command.dml.Select.queryGroup(Select.java:339)
+	at org.h2.command.dml.Select.queryWithoutCache(Select.java:613)
+	at org.h2.command.dml.Query.query(Query.java:307)
+	at org.h2.command.dml.Query.query(Query.java:277)
+	at org.h2.command.dml.Query.query(Query.java:36)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:82)
+	at org.h2.command.Command.executeQuery(Command.java:187)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:76)
+	at com.rp.sql.SQLManager.executeSelect(Unknown Source)
+	at com.rp.sql.SQLManager.executeSelect(Unknown Source)
+	at com.rp.gui.database.QueryRunner.executeSelect(Unknown Source)
+	at com.rp.gui.database.QueryRunner.executeQuery(Unknown Source)
+	at com.rp.gui.database.QueryRunner.executeQuery(Unknown Source)
+	at com.rp.gui.database.QueryUtil.executeQuery(Unknown Source)
+	at sun.reflect.GeneratedMethodAccessor27.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at com.rp.gui.util.CustomSwingWorker.construct(Unknown Source)
+	at com.rp.gui.util.SwingWorker$2.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+01-28 17:50:58 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * FROM A JOIN  B ON A.ID = B.ID HAVING SUM(M) > 6 GROUP[*] BY M; "; SQL statement:
+select * from a join  b on a.ID = b.id having sum(m) > 6 group by m; [42000-166]
+01-28 17:51:28 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Column "A.ID" must be in the GROUP BY list; SQL statement:
+select * from a join  b on a.ID = b.id group by m having sum(m) > 6; [90016-166]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.expression.ExpressionColumn.updateAggregate(ExpressionColumn.java:159)
+	at org.h2.command.dml.Select.queryGroup(Select.java:339)
+	at org.h2.command.dml.Select.queryWithoutCache(Select.java:613)
+	at org.h2.command.dml.Query.query(Query.java:307)
+	at org.h2.command.dml.Query.query(Query.java:277)
+	at org.h2.command.dml.Query.query(Query.java:36)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:82)
+	at org.h2.command.Command.executeQuery(Command.java:187)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:76)
+	at com.rp.sql.SQLManager.executeSelect(Unknown Source)
+	at com.rp.sql.SQLManager.executeSelect(Unknown Source)
+	at com.rp.gui.database.QueryRunner.executeSelect(Unknown Source)
+	at com.rp.gui.database.QueryRunner.executeQuery(Unknown Source)
+	at com.rp.gui.database.QueryRunner.executeQuery(Unknown Source)
+	at com.rp.gui.database.QueryUtil.executeQuery(Unknown Source)
+	at sun.reflect.GeneratedMethodAccessor27.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at com.rp.gui.util.CustomSwingWorker.construct(Unknown Source)
+	at com.rp.gui.util.SwingWorker$2.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+01-28 17:52:05 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Column "A.ID" must be in the GROUP BY list; SQL statement:
+select * from a join  b on a.ID = b.id group by b.m having sum(m) > 6; [90016-166]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.expression.ExpressionColumn.updateAggregate(ExpressionColumn.java:159)
+	at org.h2.command.dml.Select.queryGroup(Select.java:339)
+	at org.h2.command.dml.Select.queryWithoutCache(Select.java:613)
+	at org.h2.command.dml.Query.query(Query.java:307)
+	at org.h2.command.dml.Query.query(Query.java:277)
+	at org.h2.command.dml.Query.query(Query.java:36)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:82)
+	at org.h2.command.Command.executeQuery(Command.java:187)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:76)
+	at com.rp.sql.SQLManager.executeSelect(Unknown Source)
+	at com.rp.sql.SQLManager.executeSelect(Unknown Source)
+	at com.rp.gui.database.QueryRunner.executeSelect(Unknown Source)
+	at com.rp.gui.database.QueryRunner.executeQuery(Unknown Source)
+	at com.rp.gui.database.QueryRunner.executeQuery(Unknown Source)
+	at com.rp.gui.database.QueryUtil.executeQuery(Unknown Source)
+	at sun.reflect.GeneratedMethodAccessor27.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at com.rp.gui.util.CustomSwingWorker.construct(Unknown Source)
+	at com.rp.gui.util.SwingWorker$2.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+01-28 17:52:25 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Column "B.M" must be in the GROUP BY list; SQL statement:
+select * from a join  b on a.ID = b.id group by a.id having sum(m) > 6; [90016-166]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.expression.ExpressionColumn.updateAggregate(ExpressionColumn.java:159)
+	at org.h2.command.dml.Select.queryGroup(Select.java:339)
+	at org.h2.command.dml.Select.queryWithoutCache(Select.java:613)
+	at org.h2.command.dml.Query.query(Query.java:307)
+	at org.h2.command.dml.Query.query(Query.java:277)
+	at org.h2.command.dml.Query.query(Query.java:36)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:82)
+	at org.h2.command.Command.executeQuery(Command.java:187)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:76)
+	at com.rp.sql.SQLManager.executeSelect(Unknown Source)
+	at com.rp.sql.SQLManager.executeSelect(Unknown Source)
+	at com.rp.gui.database.QueryRunner.executeSelect(Unknown Source)
+	at com.rp.gui.database.QueryRunner.executeQuery(Unknown Source)
+	at com.rp.gui.database.QueryRunner.executeQuery(Unknown Source)
+	at com.rp.gui.database.QueryUtil.executeQuery(Unknown Source)
+	at sun.reflect.GeneratedMethodAccessor27.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at com.rp.gui.util.CustomSwingWorker.construct(Unknown Source)
+	at com.rp.gui.util.SwingWorker$2.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+01-28 18:08:34 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Column "B.M" must be in the GROUP BY list; SQL statement:
+select a.id, a.n, b.m from a join b on a.id = b.id group by a.id, b.id having sum(m); [90016-166]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.expression.ExpressionColumn.updateAggregate(ExpressionColumn.java:159)
+	at org.h2.command.dml.Select.queryGroup(Select.java:339)
+	at org.h2.command.dml.Select.queryWithoutCache(Select.java:613)
+	at org.h2.command.dml.Query.query(Query.java:307)
+	at org.h2.command.dml.Query.query(Query.java:277)
+	at org.h2.command.dml.Query.query(Query.java:36)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:82)
+	at org.h2.command.Command.executeQuery(Command.java:187)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:76)
+	at com.rp.sql.SQLManager.executeSelect(Unknown Source)
+	at com.rp.sql.SQLManager.executeSelect(Unknown Source)
+	at com.rp.gui.database.QueryRunner.executeSelect(Unknown Source)
+	at com.rp.gui.database.QueryRunner.executeQuery(Unknown Source)
+	at com.rp.gui.database.QueryRunner.executeQuery(Unknown Source)
+	at com.rp.gui.database.QueryUtil.executeQuery(Unknown Source)
+	at sun.reflect.GeneratedMethodAccessor27.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at com.rp.gui.util.CustomSwingWorker.construct(Unknown Source)
+	at com.rp.gui.util.SwingWorker$2.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+01-28 18:08:57 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT A.ID, A.N, FROM A JOIN B ON A.ID = B.ID GROUP[*] BY A.ID HAVING SUM(M); "; expected "., [, ::, *, /, %, +, -, ||, ~, !~, (, NOT, LIKE, REGEXP, IS, IN, BETWEEN, AND, OR, RIGHT, LEFT, FULL, INNER, JOIN, CROSS, NATURAL, ,, SELECT"; SQL statement:
+select a.id, a.n, from a join b on a.id = b.id group by a.id having sum(m); [42001-166]
+01-28 18:09:19 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT A.ID, A.N, FROM A JOIN B ON A.ID = B.ID HAVING[*] SUM(M); "; expected "., [, ::, *, /, %, +, -, ||, ~, !~, (, NOT, LIKE, REGEXP, IS, IN, BETWEEN, AND, OR, RIGHT, LEFT, FULL, INNER, JOIN, CROSS, NATURAL, ,, SELECT"; SQL statement:
+select a.id, a.n, from a join b on a.id = b.id having sum(m); [42001-166]
+01-28 18:10:36 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT A.ID, A.N, FROM A JOIN B ON A.ID = B.ID "; expected "., [, ::, *, /, %, +, -, ||, ~, !~, (, NOT, LIKE, REGEXP, IS, IN, BETWEEN, AND, OR, RIGHT, LEFT, FULL, INNER, JOIN, CROSS, NATURAL, ,, SELECT"; SQL statement:
+select a.id, a.n, from a join b on a.id = b.id [42001-166]
+01-28 18:10:48 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Column "A.ID" must be in the GROUP BY list; SQL statement:
+select a.id, a.n from a join b on a.id = b.id having sum(m) [90016-166]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.expression.ExpressionColumn.updateAggregate(ExpressionColumn.java:159)
+	at org.h2.command.dml.Select.queryGroup(Select.java:339)
+	at org.h2.command.dml.Select.queryWithoutCache(Select.java:613)
+	at org.h2.command.dml.Query.query(Query.java:307)
+	at org.h2.command.dml.Query.query(Query.java:277)
+	at org.h2.command.dml.Query.query(Query.java:36)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:82)
+	at org.h2.command.Command.executeQuery(Command.java:187)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:76)
+	at com.rp.sql.SQLManager.executeSelect(Unknown Source)
+	at com.rp.sql.SQLManager.executeSelect(Unknown Source)
+	at com.rp.gui.database.QueryRunner.executeSelect(Unknown Source)
+	at com.rp.gui.database.QueryRunner.executeQuery(Unknown Source)
+	at com.rp.gui.database.QueryRunner.executeQuery(Unknown Source)
+	at com.rp.gui.database.QueryUtil.executeQuery(Unknown Source)
+	at sun.reflect.GeneratedMethodAccessor27.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at com.rp.gui.util.CustomSwingWorker.construct(Unknown Source)
+	at com.rp.gui.util.SwingWorker$2.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)

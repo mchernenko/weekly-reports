@@ -1,0 +1,57 @@
+@import play.i18n._
+
+@(title: String = Messages.get("application.name"))(user: Option[Users.User] = None)(activePage: String = "")(content: Html)
+
+<html>
+    <head>
+        <title>@title</title>
+
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <script type='text/javascript' src="@routes.WebJarAssets.at(WebJarAssets.locate("jquery.js"))"></script>
+
+        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery-ui.js"))'></script>
+        <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("jquery-ui.css"))'>
+
+        <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.css"))'>
+        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.js"))'></script>
+
+        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("/2.4.0/jquery.jtable.js"))'></script>
+        <link rel="stylesheet" media="screen" href="@routes.WebJarAssets.at(WebJarAssets.locate("/2.4.0/themes/metro/darkgray/jtable.css"))">
+
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/normalize.css")">
+
+        <script type='text/javascript' src='@routes.Assets.at("javascripts/main.js")'></script>
+
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+
+    </head>
+    <body>
+
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="Home"><strong>KYOCERA</strong> weekly reports</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                    @for(menuItem <- Array("Home")) {
+                        <li @if(menuItem.equalsIgnoreCase(activePage)) { class="active" }><a href="@menuItem">@Messages.get(menuItem.toLowerCase)</a></li>
+                    }
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+
+        <div class="container content">
+        @content
+        </div><!-- /.container -->
+
+    </body>
+
+</html>

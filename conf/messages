@@ -1,0 +1,20 @@
+application.name=KYOCERA Weekly Reports
+home=Home
+about=About
+contact=Contact
+users=Users
+
+error.required=Required field missing
+error.email=Invalid email
+
+firstName=First Name
+lastName=Last Name
+email=Email
+password=Password
+role=Role
+
+role.team.leader=Team Leader
+role.developer=Developer
+
+invalid.email.or.password=Invalid email or password
+you.are.now.logged.out=You are now logged out

@@ -1,0 +1,61 @@
+@import play.i18n._
+
+@(user: Option[Users.User] = None)
+
+@main()(user)("users") {
+
+
+    <script type='text/javascript'>
+        $(document).ready(function(){
+            $('#UsersTableContainer').jtable({
+                title: '@Messages.get("users")',
+                paging: true,
+                sorting: true,
+                selecting: true,
+                multiselect: true,
+                selectingCheckboxes: true,
+                pageSize: 500,
+                actions: {
+                    listAction: "@routes.UsersController.list()",
+                    createAction: "@routes.UsersController.create()",
+                    updateAction: "@routes.UsersController.update()",
+                    deleteAction: "@routes.UsersController.delete()"
+                },
+                fields: {
+                    id: {
+                        key: true,
+                        list: false
+                    },
+                    firstName: {
+                        title: '@Messages.get("firstName")',
+                        width: '20%'
+                    },
+                    lastName: {
+                        title: '@Messages.get("lastName")',
+                        width: '20%'
+                    },
+                    email: {
+                        title: '@Messages.get("email")',
+                        width: '20%'
+                    },
+                    role: {
+                        title: '@Messages.get("role")',
+                        width: "20%",
+                        options: '@routes.UsersController.roles()'
+                    },
+                    password: {
+                        title: '@Messages.get("password")',
+                        type: 'password',
+                        width: '20%',
+                        display: function (data) {
+                            return "•••••••••••";
+                        }
+                    }
+                }
+            })
+            $('#UsersTableContainer').jtable('load')
+        })
+    </script>
+
+    <div id="UsersTableContainer"></div>
+}

@@ -1,0 +1,7 @@
+@import play.i18n._
+
+@(user: Option[Users.User] = None)
+
+@main()(user)("home") {
+    <h1>@Messages.get("home")</h1>
+}
